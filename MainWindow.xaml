@@ -1,0 +1,86 @@
+﻿<Window x:Class="Fingerprint.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fingerprint"
+        xmlns:utils="clr-namespace:Utility"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="Black" BorderThickness="5"  Grid.Column="0">
+                <utils:ZoomBorder x:Name="border" ClipToBounds="True" Background="Gray">
+                    <Image  Name="ImgPrev" Stretch="Uniform" />
+                </utils:ZoomBorder>
+            </Border>
+
+            <Border BorderBrush="Black" BorderThickness="5"  Grid.Column="1">
+                <utils:ZoomBorder x:Name="border1" ClipToBounds="True" Background="Gray">
+                    <Image   Name="Img" Stretch="Uniform" />
+                </utils:ZoomBorder>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Column="0" Padding="5" Margin="5">CN Legend:</Label>
+            <Label Grid.Column="1" Padding="5" Margin="5">Red - Single Point</Label>
+            <Label Grid.Column="2" Padding="5" Margin="5">Green - Edge End</Label>
+            <Label Grid.Column="3" Padding="5" Margin="5">Blue - Fork</Label>
+            <Label Grid.Column="4" Padding="5" Margin="5">Pink - Intersection</Label>
+        </Grid>
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Padding="5" Margin="5" Click="Filter_Median_3">Median Filter</Button>
+                <Button  Grid.Column="1" Padding="5" Margin="5" Click="Binarize_OTSU">Binarization</Button>
+                <Button  Grid.Column="2" Padding="5" Margin="5" Click="Thinning">Thinning</Button>
+                <Button  Grid.Column="3" Padding="5" Margin="5" Click="CrossingNumber">Crossing Number</Button>
+            </Grid>
+
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Padding="5" Margin="5" Click="Button_Load_Click">Load</Button>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
